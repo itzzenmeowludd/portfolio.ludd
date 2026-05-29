@@ -7,12 +7,7 @@
     <meta name="description" content="Dev, Linux sysadmin y creador de cosas para Minecraft.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: #0d0914;
@@ -21,12 +16,13 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
+
         header {
-            background-color: #150f24;
+            background-color: rgba(21, 15, 36, 0.95);
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
-            border-bottom: 2px solid #5a189a;
+            border-bottom: 1px solid #3c096c;
             z-index: 100;
         }
 
@@ -39,131 +35,168 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: #c77dff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(199, 125, 255, 0.3);
         }
 
         nav a {
             color: #d1c5e5;
             text-decoration: none;
             margin-left: 1.5rem;
-            transition: color 0.2s;
+            font-size: 0.9rem;
+            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #e0aaff;
-        }
+        nav a:hover { color: #e0aaff; }
 
-        /* Contenedor principal */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
 
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 4rem 0;
-            border-bottom: 1px dashed #3c096c;
+            padding: 2rem 0 4rem;
         }
 
         .hero img {
-            width: 130px;
-            height: 130px;
+            width: 120px; height: 120px;
             border-radius: 50%;
-            border: 3px solid #7b2cbf;
+            border: 2px solid #5a189a;
+            box-shadow: 0 0 15px rgba(123, 44, 191, 0.4);
             margin-bottom: 1.5rem;
             object-fit: cover;
         }
 
-        h1 {
-            color: #e0aaff;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            color: #9d4edd;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
+        h1 { color: #e0aaff; font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .subtitle { color: #9d4edd; font-weight: 500; margin-bottom: 1.5rem; }
 
         .btn {
-            background-color: #5a189a;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            border: 1px solid #7b2cbf;
-            transition: 0.2s;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background-color: #7b2cbf;
-        }
-
-        section {
-            padding: 3rem 0;
-            border-bottom: 1px dashed #3c096c;
-        }
-
-        h2 {
+            background-color: transparent;
             color: #c77dff;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #7b2cbf;
-            padding-left: 10px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid #c77dff;
+            transition: 0.3s;
         }
+
+        .btn:hover { background-color: #c77dff; color: #0d0914; box-shadow: 0 0 15px #c77dff; }
+
+        section { padding: 3rem 0; border-top: 1px solid #1e1533; }
+
+        h2 { color: #e0aaff; margin-bottom: 1.5rem; font-size: 1.5rem; }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
         .card {
-            background-color: #150f24;
-            border: 1px solid #3c096c;
+            background: #150f24;
             padding: 1.5rem;
-            border-radius: 8px;
-            transition: transform 0.2s;
+            border-radius: 12px;
+            border: 1px solid #240046;
+            transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #7b2cbf;
-        }
-
-        .card h3 {
-            color: #e0aaff;
-            margin-bottom: 0.5rem;
-        }
-
-        .tags {
-            margin-top: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
+        .card:hover { border-color: #5a189a; transform: translateY(-5px); }
 
         .tag {
-            background-color: #240046;
+            background: #240046;
             color: #c77dff;
-            padding: 3px 8px;
+            padding: 2px 8px;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-family: monospace;
         }
 
-        .setup-list {
+        .socials a { color: #d1c5e5; font-size: 1.5rem; margin-right: 15px; transition: 0.3s; }
+        .socials a:hover { color: #c77dff; }
+
+        footer { text-align: center; padding: 3rem; color: #5a189a; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">itzzenmeow.ludd</div>
+            <nav>
+                <a href="#about">Sobre mí</a>
+                <a href="#projects">Proyectos</a>
+                <a href="#setup">Setup</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <img src="yo.png" alt="Axel (Zen)">
+            <h1>Axel / Zen</h1>
+            <div class="subtitle">Dev & Sysadmin | Linux & MC Ecosystem</div>
+            <p>15 años. Lomas de Zamora. Trasteando con servidores, optimizando sistemas y levantando proyectos.</p>
+            <br>
+            <a href="https://discord.gg/S2R5bqHTRX" class="btn">Hablemos por Discord</a>
+        </div>
+
+        <section id="about">
+            <h2>Stack & Habilidades</h2>
+            <p>Priorizo la eficiencia y la estabilidad. Si corre en un servidor Linux, me interesa.</p>
+            <div class="tags" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="tag">Python</span>
+                <span class="tag">Debian</span>
+                <span class="tag">Bash</span>
+                <span class="tag">Pterodactyl</span>
+                <span class="tag">Minecraft Plugins</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Proyectos</h2>
+            <div class="projects-grid">
+                <div class="card">
+                    <h3>☁️ Nubea Cloud</h3>
+                    <p style="font-size: 0.9rem;">Infraestructura y hosting optimizado para MC, webs y bots.</p>
+                </div>
+                <div class="card">
+                    <h3>⚔️ Valkyrie</h3>
+                    <p style="font-size: 0.9rem;">Plataforma de rankeo y tierlists para competitivo de Minecraft.</p>
+                </div>
+                <div class="card">
+                    <h3>💻 ZenOS / Meow OS</h3>
+                    <p style="font-size: 0.9rem;">Distro basada en Debian orientada a terminal y pentesting.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="setup">
+            <h2>Mi Setup</h2>
+            <p>Menos es más:</p>
+            <ul style="list-style: none; margin-top: 1rem;">
+                <li><i class="fas fa-microchip"></i> <b>CPU:</b> Intel Core i5-3570</li>
+                <li><i class="fas fa-memory"></i> <b>RAM:</b> 16 GB DDR3</li>
+                <li><i class="fas fa-desktop"></i> <b>OS:</b> Debian / Ubuntu</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Links</h2>
+            <div class="socials">
+                <a href="https://github.com/itzzenmeowludd"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/ZazaPenja46024"><i class="fab fa-twitter"></i></a>
+                <a href="https://discord.gg/S2R5bqHTRX"><i class="fab fa-discord"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 itzzenmeow.ludd | Construido con café y terminal.</p>
+    </footer>
+</body>
+</html>
